@@ -11,8 +11,9 @@ pipeline {
             }
         }
 
-        stage('test') {
+        stage('generate-image') {
             steps {
+                sh 'docker build -t notes-app:latest .'
                 echo "test stage"
             }
         }
