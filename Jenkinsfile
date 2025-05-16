@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'testing'
+        label 'dev-server'
     }
 
     stages {
