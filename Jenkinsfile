@@ -3,13 +3,14 @@ pipeline {
     agent { label 'agent-server' }
 
     stages {
-        stage('hello'){
-            steps{
-                script{
+        stage('hello') {
+            steps {
+                script {
                     home()
                 }
             }
         }
+
         stage('clone-stage') {
             steps {
                 git url: 'https://github.com/Nitishkashyap08/django-notes-app.git', branch: 'main'
@@ -35,17 +36,15 @@ pipeline {
             }
         }
 
-       stage('deploy') {
-    steps {
-        echo 'Deploying using docker-compose'
-        echo 'testing purpose using web-hook'
-        sh '''
-            docker rm -f db_cont || true
-            docker-compose up -d
-        '''
-    }
-}
-
-
+        stage('deploy') {
+            steps {
+                echo 'Deploying using docker-compose'
+                echo 'testing purpose using web-hook'
+                sh '''
+                    docker rm -f db_cont || true
+                    docker-compose up -d
+                '''
+            }
+        }
     }
 }
