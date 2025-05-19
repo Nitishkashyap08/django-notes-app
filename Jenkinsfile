@@ -6,7 +6,7 @@ pipeline {
         stage('hello') {
             steps {
                 script {
-                    home()
+                    home()  // Calls the shared library function
                 }
             }
         }
