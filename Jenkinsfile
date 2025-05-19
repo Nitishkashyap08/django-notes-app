@@ -27,11 +27,15 @@ pipeline {
             }
         }
 
-        stage('deploy') {
-            steps {
-                echo 'Deploying using docker-compose'
-                sh 'docker-compose up -d'
-            }
-        }
+       stage('deploy') {
+    steps {
+        echo 'Deploying using docker-compose'
+        sh '''
+            docker-compose down
+            docker-compose up -d
+        '''
+    }
+}
+
     }
 }
