@@ -18,6 +18,17 @@ pipeline {
             }
         }
 
+    stage('deploytodockerhun'){
+        steps{
+            echo "push to dockerhub"
+            withCredentials([usernamePassword('CredintialsId':"dockerHubCred",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}" 
+                sh "docker image tag notes-app:latest ${env.dockerHubUser}/notes-app:latest"
+                sh "docker ${env.dockerHubUser}/push notes-app:latest"
+            }
+        }
+    }
+
         stage('deploy') {
             steps {
                 echo "deployed successfully"
