@@ -31,11 +31,12 @@ pipeline {
     steps {
         echo 'Deploying using docker-compose'
         sh '''
-            docker-compose down
+            docker rm -f db_cont || true
             docker-compose up -d
         '''
     }
 }
+
 
     }
 }
