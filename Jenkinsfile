@@ -30,6 +30,7 @@ pipeline {
        stage('deploy') {
     steps {
         echo 'Deploying using docker-compose'
+        echo 'testing purpose using web-hook'
         sh '''
             docker rm -f db_cont || true
             docker-compose up -d
