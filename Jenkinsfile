@@ -3,6 +3,13 @@ pipeline {
     agent { label 'agent-server' }
 
     stages {
+        stage('hello'){
+            steps{
+                script{
+                    home()
+                }
+            }
+        }
         stage('clone-stage') {
             steps {
                 git url: 'https://github.com/Nitishkashyap08/django-notes-app.git', branch: 'main'
